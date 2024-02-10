@@ -1,7 +1,7 @@
 export default function Tags() {
     return (
         <div className="relative my-7">
-            <h1 className='text-3xl'>Tags:</h1>
+            {/* <h1 className='text-2xl'>Tags:</h1>
             <div className='flex gap-3 pt-3'>
                 <div className='bg-neutral-300 rounded w-auto flex justify-center p-2'>
                     <h5 className='text-xl'>Anime</h5>
@@ -23,7 +23,7 @@ export default function Tags() {
                 <div className='bg-neutral-300 rounded w-auto flex justify-center p-2'>
                     <h5 className='text-xl'>Bleach</h5>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

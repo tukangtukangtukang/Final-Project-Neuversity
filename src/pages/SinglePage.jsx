@@ -10,7 +10,6 @@ function SinglePage() {
       <div className="container" >
         <div className="flex gap-3">
           <TitleSinglePage />
-          <Tags />
         </div>
         <Paragraph />
       </div>

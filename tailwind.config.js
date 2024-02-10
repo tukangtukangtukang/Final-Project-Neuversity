@@ -19,10 +19,9 @@ export default {
       sans: ['Inter', 'sans-serif'],
     },
   },
-  plugins: [require("daisyui")],
-  daisyui :{
+  plugins: [require("daisyui", require('@tailwindcss/typography'),)],
+  daisyui: {
     themes: ["light"],
-},
+  },
 }
-  
-  
+
