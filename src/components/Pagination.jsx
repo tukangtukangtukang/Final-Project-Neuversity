@@ -1,6 +1,6 @@
 export default function Pagination() {
     return (
-        <div className='md:py-4 flex justify-center'>
+        <div className='md:py-6 flex justify-center'>
             <nav aria-label="Page navigation example">
                 <ul className="flex items-center -space-x-px h-8 text-base">
                     <li className="">

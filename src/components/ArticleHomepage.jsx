@@ -1,7 +1,46 @@
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 import FeaturedArticleHomepage from "./FeaturedArticleHomepage";
+import PostArticleHomepage from "./PostArticleHomepage";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+
 
 export default function ArticleHomepage() {
+
+    const [posts, setPosts] = useState(null)
+
+    async function getPosts() {
+        const endpoint = 'https://api-fe-batch5.neuversity.id/api/posts';
+        const res = await fetch(endpoint);
+        const data = await res.json();
+        setPosts(data);
+    }
+    //getProducts();
+
+    //mounting
+    useEffect(() => {
+        console.log("mounting")
+        getPosts();
+    }, [])
+
+    return (
+        <div className="container justify-center gap-5">
+            <NavLink to="/" >
+                <FeaturedArticleHomepage />
+            </NavLink>
+            <div className="grid lg:grid-cols-4 sm:grid-cols-2 justify-center container px-7">
+                {
+                    posts !== null
+                        ? posts.data.slice(0, 4).map((e) => { // ngambil 4 post sadja
+                            return <PostArticleHomepage key={e.id} data={e} />
+                        })
+                        : "kosong"
+                }
+            </div>
+        </div>
+
+    )
+
     return (
         <div className="container justify-center gap-5">
             <NavLink to="/" >
@@ -9,34 +48,17 @@ export default function ArticleHomepage() {
             </NavLink>
             <div className='grid lg:grid-cols-4 sm:grid-cols-2 justify-center container px-7'>
                 <NavLink to="/singlepage" >
-                    <div className='w-60 mx-auto pb-5'>
-                        <img src="https://picsum.photos/seed/picsum/281/184" alt="" className='w-80 rounded-badge mx-auto' />
-                        <h1 className='font-bold'>Title</h1>
-                        <p className="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, dolor.</p>
-                    </div>
+                    <PostArticleHomepage />
                 </NavLink>
                 <NavLink to="/" >
-                    <div className='w-60 mx-auto'>
-                        <img src="https://picsum.photos/seed/picsum/281/184" alt="" className='w-80 rounded-badge mx-auto' />
-                        <h1 className='font-bold'>Title</h1>
-                        <p className="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, dolor.</p>
-                    </div>
+                    <PostArticleHomepage />
                 </NavLink>
                 <NavLink to="/" >
-                    <div className='w-60 mx-auto'>
-                        <img src="https://picsum.photos/seed/picsum/281/184" alt="" className='w-80 rounded-badge mx-auto' />
-                        <h1 className='font-bold'>Title</h1>
-                        <p className="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, dolor.</p>
-                    </div>
+                    <PostArticleHomepage />
                 </NavLink>
                 <NavLink to="/" >
-                    <div className='w-60 mx-auto'>
-                        <img src="https://picsum.photos/seed/picsum/281/184" alt="" className='w-80 rounded-badge mx-auto' />
-                        <h1 className='font-bold'>Title</h1>
-                        <p className="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, dolor.</p>
-                    </div>
+                    <PostArticleHomepage />
                 </NavLink>
-
             </div>
         </div>
     )

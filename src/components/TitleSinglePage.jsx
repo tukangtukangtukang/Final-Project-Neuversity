@@ -1,4 +1,4 @@
-export default function TitleSinglePage() {
+export default function TitleSinglePage( ) {
     return (
         <section className="container mx-auto py-5">
             <div className="relative rounded-xl overflow-hidden">
