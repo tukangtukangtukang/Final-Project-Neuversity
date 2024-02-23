@@ -1,3 +1,4 @@
+import '@splidejs/react-splide/css';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import PostFeaturedArticleHomepage from './PostFeaturedArticleHomepage';
 
