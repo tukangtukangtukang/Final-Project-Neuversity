@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import Logo from "../components/Logo.jsx"
 import LogOut from "../components/LogOut.jsx"
 import Searchbar from "../components/Searchbar.jsx"

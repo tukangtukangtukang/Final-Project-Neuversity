@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logoSearch from '../assets/magnifier.svg';
 import { useNavigate } from 'react-router-dom';
 
 export default function Searchbar() {
@@ -18,7 +19,7 @@ export default function Searchbar() {
     return (
         <form onSubmit={handleSearchSubmit} className="relative flex items-center">
             <img
-                src="./src/assets/magnifier.svg"
+                src={logoSearch}
                 alt="Search"
                 className="absolute cursor-pointer items-center w-4 ms-4"
                 onClick={handleSearchSubmit}

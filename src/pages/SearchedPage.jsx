@@ -4,8 +4,8 @@ import ArticleSearchedPage from "../components/ArticleSearchedPage"
 function SearchedPage() {
   return (
     <div>
-        <Navbar />
-        <ArticleSearchedPage />
+      <Navbar />
+      <ArticleSearchedPage />
     </div>
   )
 }

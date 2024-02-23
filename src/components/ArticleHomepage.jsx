@@ -1,65 +1,44 @@
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useArticle } from "./ArticleContext";
 import FeaturedArticleHomepage from "./FeaturedArticleHomepage";
 import PostArticleHomepage from "./PostArticleHomepage";
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-
+import { useState, useEffect } from "react";
 
 export default function ArticleHomepage() {
+    // // Desctructure posts dari konteks
+    const { posts, setPosts, currentPage } = useArticle();
 
-    const [posts, setPosts] = useState(null)
+    const getPosts = async () => {
+        try {
+            const response = await fetch(`https://blog-fe-batch5.neuversity.id/blog-fe-batch5/wp-json/wp/v2/posts?page=${currentPage}&per_page=4&_embed=true`);
+            const data = await response.json();
+            setPosts(data);
+        } catch (error) {
+            console.error('Error fetching posts:', error);
+        }
+    };
 
-    async function getPosts() {
-        const endpoint = 'https://api-fe-batch5.neuversity.id/api/posts';
-        const res = await fetch(endpoint);
-        const data = await res.json();
-        setPosts(data);
-    }
-    //getProducts();
-
-    //mounting
     useEffect(() => {
-        console.log("mounting")
         getPosts();
-    }, [])
+    }, [currentPage]);
 
     return (
         <div className="container justify-center gap-5">
-            <NavLink to="/" >
+
+            <NavLink to="/">
                 <FeaturedArticleHomepage />
             </NavLink>
+
             <div className="grid lg:grid-cols-4 sm:grid-cols-2 justify-center container px-7">
                 {
                     posts !== null
-                        ? posts.data.slice(0, 4).map((e) => { // ngambil 4 post sadja
-                            return <PostArticleHomepage key={e.id} data={e} />
-                        })
-                        : "kosong"
+                        ? posts.map((e) => (
+                            // card post
+                            <PostArticleHomepage key={e.id} data={e} />
+                        ))
+                        : "Loading..."
                 }
             </div>
         </div>
-
-    )
-
-    return (
-        <div className="container justify-center gap-5">
-            <NavLink to="/" >
-                <FeaturedArticleHomepage />
-            </NavLink>
-            <div className='grid lg:grid-cols-4 sm:grid-cols-2 justify-center container px-7'>
-                <NavLink to="/singlepage" >
-                    <PostArticleHomepage />
-                </NavLink>
-                <NavLink to="/" >
-                    <PostArticleHomepage />
-                </NavLink>
-                <NavLink to="/" >
-                    <PostArticleHomepage />
-                </NavLink>
-                <NavLink to="/" >
-                    <PostArticleHomepage />
-                </NavLink>
-            </div>
-        </div>
-    )
+    );
 }
