@@ -58,8 +58,8 @@ function LoginAdmin() {
         <div className="py-24 drop-shadow-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 min-h-screen">
             <div className="container">
                 <form onSubmit={handleSubmit} className="w-72 mx-auto bg-gray-300 p-5 rounded-badge" style={{ height: '350px' }}>
-                    <h1 className="flex justify-center font-bold text-xl pt-4">Welcome Back</h1>
-                    <div className="py-7">
+                    <h1 className="flex justify-center font-bold text-2xl pt-4">Login</h1>
+                    <div className="py-6">
                         <InputLogin name="username" label="Username" placeholder="Isikan username.." value={username} onInput={(event) => setUsername(event.target.value)} />
                         {/* event.target.value untuk dapetin value dari input */}
                         <InputLogin name="password" label="Password" placeholder="Isikan password.." type="password" value={password} onInput={(event) => setPassword(event.target.value)} />

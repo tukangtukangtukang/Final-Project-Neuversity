@@ -5,4 +5,4 @@ async function getPosts() {
     return data;
 }
 
-export { getPosts }
+export { getPosts } 
