@@ -30,22 +30,28 @@ export default function EditPost() {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                document.getElementById('my_modal_2').close();
                 // Ambil data terbaru dari server
                 getPosts().then(data => {
                     setPosts(data);
+                    // Tutup modal
+                    document.getElementById('my_modal_2').close();
+                    // Tampilkan swal setelah modal ditutup
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Post updated successfully.',
+                        icon: 'success'
+                    });
                 });
             })
-            .catch((error) => {
-                console.error('Error:', error);
+            .catch(error => {
+                console.error('Error updating post:', error);
                 Swal.fire({
                     title: 'Error!',
-                    text: 'Failed to create post.',
+                    text: 'Failed to update post.',
                     icon: 'error'
                 });
             });
     }
-
     return (
         <div className="w-6">
             <button className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-xs px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onClick={() => document.getElementById('my_modal_1').showModal()}>Edit</button>
