@@ -13,7 +13,7 @@ export default function PostArticleSearchedPageAdmin({ data }) {
                 <div className="text-xs line-clamp-2 break-all" dangerouslySetInnerHTML={{ __html: data.excerpt.rendered }}>
                 </div>
                 <div className="flex gap-10">
-                    <EditPost />
+                    <EditPost id={data.id}/>
                     <DeletePost />
                 </div>
             </div>

@@ -1,17 +1,15 @@
 import Swal from 'sweetalert2';
 import React, { useState } from 'react';
 import ButtonUpload from "./ButtonUpload";
-import { useParams } from "react-router-dom";
 import { getPosts } from "../utils/fetchData";
 import { useArticle } from "./ArticleContext";
 
 import TextAreaArticle from "./TextAreaArticle";
 
-export default function EditPost() {
+export default function EditPost({ id }) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const { setPosts } = useArticle();
-    const { id } = useParams();
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -19,6 +17,7 @@ export default function EditPost() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')} `
             },
             body: JSON.stringify({
                 title: title,
@@ -51,35 +50,35 @@ export default function EditPost() {
                     icon: 'error'
                 });
             });
-        }
-        return (
-            <div className="w-6">
-                <button className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-xs px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onClick={() => document.getElementById('my_modal_1').showModal()}>Edit</button>
-                <dialog id="my_modal_1" className="modal outline-none backdrop-blur-md">
-                    <div className="modal-box outline-none">
-                        <h3 className="font-bold text-3xl flex justify-center pb-5">Edit Post</h3>
-                        <div className="mb-5">
-                            <form onSubmit={handleSubmit}>
-                                <label htmlFor="title" className="block mb-2 text-sm font-medium text-black dark:text-black">Title</label>
-                                <input
-                                    type="text"
-                                    id="title"
-                                    className="border bg-gray-200 text-sm rounded-xl focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5"
-                                    placeholder="Tulis Judul Disini"
-                                    value={title}
-                                    onChange={(event) => setTitle(event.target.value)}
-                                    required
-                                />
-                                <TextAreaArticle value={content} onChange={(event) => setContent(event.target.value)} />
-                                <ButtonUpload />
-                                <div className="modal-action">
-                                    <button className="btn" onClick={() => document.getElementById('my_modal_2').close()}>Close</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </dialog>
-            </div>
-        )
     }
+    return (
+        <div className="w-6">
+            <button className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-xs px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onClick={() => document.getElementById('modal_edit').showModal()}>Edit</button>
+            <dialog id="modal_edit" className="modal outline-none backdrop-blur-md">
+                <div className="modal-box outline-none">
+                    <h3 className="font-bold text-3xl flex justify-center pb-5">Edit Post</h3>
+                    <div className="mb-5">
+                        <form onSubmit={handleSubmit}>
+                            <label htmlFor="title" className="block mb-2 text-sm font-medium text-black dark:text-black">Title</label>
+                            <input
+                                type="text"
+                                id="title"
+                                className="border bg-gray-200 text-sm rounded-xl focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5"
+                                placeholder="Tulis Judul Disini"
+                                value={title}
+                                onChange={(event) => setTitle(event.target.value)}
+                                required
+                            />
+                            <TextAreaArticle value={content} onChange={(event) => setContent(event.target.value)} />
+                            <ButtonUpload />
+                            <div className="modal-action">
+                                <button type='button' className="btn" onClick={() => document.getElementById('modal_edit').close()}>Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+        </div>
+    )
+}
 
