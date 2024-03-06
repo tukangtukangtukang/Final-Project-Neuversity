@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import Paragraph from "../components/Paragraph";
 import TitleSinglePage from "../components/TitleSinglePage";
 import { getPost } from "../utils/fetchData";
-import { data } from "autoprefixer";
 
 function SinglePage() {
   const { id } = useParams();

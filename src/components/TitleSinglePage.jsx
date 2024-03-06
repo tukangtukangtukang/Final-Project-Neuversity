@@ -18,21 +18,7 @@ export default function TitleSinglePage({ data }) {
                             <h1 className="mb-3 text-3xl font-bold text-white">{data.title.rendered}</h1>
                             {/* tags */}
                             <div className="flex gap-3">
-                                <span className="inline-block rounded-full bg-red-300 px-3 py-1">
-                                    anime
-                                </span>
-                                <span className="inline-block rounded-full bg-red-300 px-3 py-1">
-                                    anime
-                                </span>
-                                <span className="inline-block rounded-full bg-red-300 px-3 py-1">
-                                    anime
-                                </span>
-                                <span className="inline-block rounded-full bg-red-300 px-3 py-1">
-                                    anime
-                                </span>
-                                <span className="inline-block rounded-full bg-red-300 px-3 py-1">
-                                    anime
-                                </span>
+                                {/* Hurung */}
                                 <span className="inline-block rounded-full bg-red-300 px-3 py-1">
                                     anime
                                 </span>
