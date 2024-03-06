@@ -1,12 +1,15 @@
-import Navbar from "../components/Navbar";
+
 import ArticleSearchedPageAdmin from "../components/ArticleSearchedPageAdmin"
+import Admin from "../layout/Admin";
 
 function HomepageAdmin() {
   return (
-    <div>
-        <Navbar />
+    <>
+
+      <Admin>
         <ArticleSearchedPageAdmin />
-    </div>
+      </Admin>
+    </>
   )
 }
 

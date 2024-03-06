@@ -6,7 +6,7 @@ export default function Admin({ children }) {
     <>
         <Navbar />
         <main>
-            <h1>Admin</h1>
+            {children}
         </main>
         <Footer />
     </>
