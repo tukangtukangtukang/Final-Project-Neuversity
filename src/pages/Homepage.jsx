@@ -1,14 +1,13 @@
+import Client from "../layout/Client";
 import ArticleHomepage from "../components/ArticleHomepage";
-import Navbar from "../components/Navbar";
 import Pagination from "../components/Pagination";
 
 function Homepage() {
   return (
-    <div className="">
-      <Navbar />
+    <Client>
       <ArticleHomepage />
       <Pagination />
-    </div>
+    </Client>
   )
 }
 
