@@ -11,7 +11,7 @@ export default function ArticleHomepage() {
 
     const getPosts = async () => {
         try {
-            const response = await fetch(`https://blog-fe-batch5.neuversity.id/blog-fe-batch5/wp-json/wp/v2/posts?page=${currentPage}&per_page=4&_embed=true`);
+            const response = await fetch(`https://blog-fe-batch5.neuversity.id/blog-fe-batch5/wp-json/wp/v2/posts?page=${currentPage}&per_page=4&_embed=true&author=11`);
             const data = await response.json();
             setPosts(data);
         } catch (error) {

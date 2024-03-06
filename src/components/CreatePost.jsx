@@ -3,14 +3,34 @@ import Kotak from "../assets/kotak.png";
 import ButtonUpload from './ButtonUpload';
 import { getPosts } from '../utils/fetchData';
 import { useArticle } from './ArticleContext';
-import TextAreaArticle from './TextAreaArticle';
 import Swal from 'sweetalert2';
+
+// Require Editor CSS files.
+import 'froala-editor/css/froala_style.min.css';
+import 'froala-editor/css/froala_editor.pkgd.min.css';
+import 'froala-editor/js/plugins.pkgd.min.js';
+
+import FroalaEditorComponent from 'react-froala-wysiwyg';
 
 export default function CreatePost() {
 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const { setPosts } = useArticle();
+
+    const config = {
+        height: 300,
+        placeholderText: 'Tulis Konten Disini',
+        imageUploadURL: 'https://blog-fe-batch5.neuversity.id/blog-fe-batch5/wp-json/wp/v2/media',
+        requestHeaders: {
+            authorization: "Bearer " + localStorage.getItem("token"),
+        }
+    }
+
+    function clearForm() {
+        setTitle('');
+        setContent('');
+    }
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -32,10 +52,11 @@ export default function CreatePost() {
             .then(data => {
                 console.log(data);
                 // Tutup modal
-                document.getElementById('my_modal_2').close();
+                document.getElementById('modal_create').close();
                 // Ambil data terbaru dari server
                 getPosts().then(data => {
                     setPosts(data);
+                    clearForm();
                 });
                 // Munculkan SweetAlert setelah modal ditutup
                 Swal.fire({
@@ -57,11 +78,11 @@ export default function CreatePost() {
     return (
         <div className="flex items-center">
             <div className="flex items-center">
-                <button onClick={() => document.getElementById('my_modal_2').showModal()} className="mr-4">
+                <button onClick={() => document.getElementById('modal_create').showModal()} className="mr-4">
                     <img src={Kotak} alt="" className="w-60 h-40" />
                 </button>
-                <dialog id="my_modal_2" className="modal outline-none backdrop-blur-md">
-                    <div className="modal-box outline-none">
+                <dialog id="modal_create" className="modal outline-none backdrop-blur-md">
+                    <div className="modal-box outline-none max-w-screen-md">
                         <h3 className="font-bold text-3xl flex justify-center pb-5">Create New Post</h3>
                         <div className="mb-5">
                             <form onSubmit={handleSubmit}>
@@ -75,10 +96,12 @@ export default function CreatePost() {
                                     placeholder="Tulis Judul Disini"
                                     required
                                 />
-                                <TextAreaArticle value={content} onChange={(event) => setContent(event.target.value)} />
+                                <label htmlFor="content" className="block mb-2 pt-3 text-sm font-medium text-black dark:text-black">Content</label>
+                                <FroalaEditorComponent tag='textarea' config={config} model={content} onModelChange={(event) => setContent(event)} />
+                                {/* <TextAreaArticle value={content} onChange={(event) => setContent(event.target.value)} /> */}
                                 <ButtonUpload />
                                 <div className="modal-action">
-                                    <button className="btn" onClick={() => document.getElementById('my_modal_2').close()}>Close</button>
+                                    <button className="btn" onClick={() => document.getElementById('modal_create').close()}>Close</button>
                                 </div>
                             </form>
                         </div>

@@ -14,7 +14,7 @@ export default function PostArticleSearchedPageAdmin({ data }) {
                 </div>
                 <div className="flex gap-10">
                     <EditPost id={data.id}/>
-                    <DeletePost />
+                    <DeletePost id={data.id}/>
                 </div>
             </div>
         </div>

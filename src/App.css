@@ -46,3 +46,11 @@
 .read-the-docs {
   color: #888;
 }
+
+.custom-modal-box {
+  width: 200px; /* Adjust the width as needed */
+}
+
+#modal_create {
+  width: 800px; /* Adjust as needed */
+}

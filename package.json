@@ -11,8 +11,11 @@
   },
   "dependencies": {
     "@splidejs/react-splide": "^0.7.12",
+    "font-awesome": "^4.7.0",
+    "froala-editor": "^4.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-froala-wysiwyg": "^4.1.4",
     "react-router-dom": "^6.21.3",
     "sweetalert2": "^11.10.5"
   },
