@@ -5,7 +5,6 @@ import Admin from "../layout/Admin";
 function HomepageAdmin() {
   return (
     <>
-
       <Admin>
         <ArticleSearchedPageAdmin />
       </Admin>
