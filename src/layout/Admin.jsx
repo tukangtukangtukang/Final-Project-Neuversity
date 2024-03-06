@@ -1,9 +1,14 @@
-import React from 'react'
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
-export default function Admin() {
+export default function Admin({ children }) {
   return (
-    <div>
-        
-    </div>
+    <>
+        <Navbar />
+        <main>
+            <h1>Admin</h1>
+        </main>
+        <Footer />
+    </>
   )
 }
