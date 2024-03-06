@@ -21,4 +21,21 @@ async function getPost(id) {
 }
 
 
-export { getPosts, getPost } 
+async function checkAuth(){
+    const token = localStorage.getItem('token');
+    if (!token) {
+        return false;
+    }
+    const endpoint = 'https://blog-fe-batch5.neuversity.id/blog-fe-batch5/wp-json/jwt-auth/v1/token/validate';
+    const res = await fetch(endpoint, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    if (!res.ok) {
+        return false;
+    }
+    return true;
+}
+
+export { getPosts, getPost, checkAuth } 
