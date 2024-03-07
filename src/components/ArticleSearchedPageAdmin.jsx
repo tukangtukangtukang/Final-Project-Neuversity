@@ -27,7 +27,7 @@ export default function ArticleSearchedPageAdmin() {
                     })
                     : "kosong"
             }
-
+            
         </div>
 
     )

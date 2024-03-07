@@ -22,16 +22,25 @@ async function getPost(id) {
 
 
 async function checkAuth(){
+    // get token from local storage
     const token = localStorage.getItem('token');
+    
+    // if token is not found, return false
     if (!token) {
         return false;
     }
+
+    // validate token
     const endpoint = 'https://blog-fe-batch5.neuversity.id/blog-fe-batch5/wp-json/jwt-auth/v1/token/validate';
+    // minta token ke server
     const res = await fetch(endpoint, {
+        method: 'POST',
         headers: {
             Authorization: `Bearer ${token}`,
         },
     });
+
+    // jika token tidak valid, return false
     if (!res.ok) {
         return false;
     }

@@ -16,8 +16,12 @@ async function logout() {
         const data = await res.json(); // Mengambil data dari respons
 
         if (res.ok) {
-            console.log(data.message); // Menampilkan pesan dari respons
-            // Tambahkan kode lain yang ingin Anda jalankan setelah logout berhasil
+            console.log(data.message);
+            Swal.fire({
+                title: 'Success!',
+                text: 'Logout berhasil.',
+                icon: 'success'
+            });
         } else {
             console.error(data.message); // Menampilkan pesan dari respons jika logout gagal
             // Tambahkan kode lain yang ingin Anda jalankan jika logout gagal
@@ -38,10 +42,21 @@ function LogoutButton() {
     };
 
     return (
-        <div className='px-6 py-3 flex items-center invisible'>
-            <button onClick={handleLogout} className="flex">
+        <div className='px-6 py-3 flex items-center'>
+            <button onClick={() => document.getElementById('modal_logout').showModal()}  className="flex">
                 <img src={logoLogout} alt="" className='w-6' />
                 <h1 className='my-auto ml-2 text-xs'>Log Out</h1>
+                <dialog id="modal_logout" className="modal outline-none backdrop-blur-md">
+                    <div className="modal-box outline-none">
+                        <form>
+                            <h3 className="font-bold text-3xl flex justify-center pb-5">Are you sure you want to logout ??</h3> {/* Display the dynamic title */}
+                            <div className="modal-action flex justify-between">
+                                <button type='button' className="btn" onClick={handleLogout}>Yes</button>
+                                <button className="btn" onClick={() => document.getElementById('modal_logout').close()}>No</button>
+                            </div>
+                        </form>
+                    </div>
+                </dialog>
             </button>
         </div>
     );
