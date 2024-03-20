@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 
 export default function PostFeaturedArticleHomepage({ data }) {
     return (
-        <div>
+        <div className="">
             <NavLink to={"/singlepage/" + data.id}>
                 <h1 className="absolute text-5xl font-bold mt-28 ms-28 sm:ms-20">{data.title.rendered}</h1>
                 <div className="absolute pt-5 px-2 mt-36 ms-28 text-balance text-sm sm:ms-20" dangerouslySetInnerHTML={{ __html: data.excerpt.rendered }}></div>

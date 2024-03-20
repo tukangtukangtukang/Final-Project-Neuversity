@@ -21,7 +21,15 @@ export default function ArticleHomepage() {
 
     useEffect(() => {
         getPosts();
-    }, [currentPage, search]);
+    }, [currentPage]);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            getPosts();
+        }, 500);
+
+        return () => clearTimeout(timeout);
+    }, [search]);
 
     return (
         <div className="container justify-center gap-5">
