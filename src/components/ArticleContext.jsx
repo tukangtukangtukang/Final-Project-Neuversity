@@ -8,9 +8,10 @@ export const ArticleProvider = ({ children }) => {
     const [posts, setPosts] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPage, setTotalPage] = useState(1);
+    const [search, setSearch ] = useState('');
 
     return (
-        <ArticleContext.Provider value={{ posts, setPosts, currentPage, setCurrentPage, totalPage, setTotalPage }}>
+        <ArticleContext.Provider value={{ posts, setPosts, currentPage, setCurrentPage, totalPage, setTotalPage, search, setSearch }}>
             {children}
         </ArticleContext.Provider>
     );
