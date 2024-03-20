@@ -1,10 +1,10 @@
-import Navbar from '../components/Navbar';
+import NavbarClient from '../components/NavbarClient';
 import Footer from '../components/Footer';
 
 export default function Client({ children }) {
     return (
         <>
-            <Navbar />
+            <NavbarClient />
 
             <main>
                 {children}

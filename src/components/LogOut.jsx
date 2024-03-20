@@ -1,4 +1,5 @@
 import logoLogout from '../assets/LogOut.png';
+import { useNavigate } from 'react-router-dom';
 
 async function logout() {
     const endpoint = 'https://api-fe-batch5.neuversity.id/api/admin/logout';
@@ -34,11 +35,13 @@ async function logout() {
 
 
 function LogoutButton() {
+    const navigate = useNavigate();
+    
     const handleLogout = async () => {
-        await logout();
-        // Setelah logout berhasil, Anda dapat menambahkan kode lain yang ingin dieksekusi di sini
-        // Misalnya, redirect ke halaman login
-        window.location.href = 'http://localhost:5173/login';
+        // await logout();
+        localStorage.removeItem('token');
+
+        navigate('/login');
     };
 
     return (

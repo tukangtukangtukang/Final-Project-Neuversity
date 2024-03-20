@@ -1,9 +1,9 @@
-import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Paragraph from "../components/Paragraph";
 import TitleSinglePage from "../components/TitleSinglePage";
 import { getPost } from "../utils/fetchData";
+import Client from "../layout/Client";
 
 function SinglePage() {
   const { id } = useParams();
@@ -13,9 +13,9 @@ function SinglePage() {
   }, []);
 
   return (
-    <div>
+    <Client>
       <div className="container">
-        <Navbar />
+        <NavbarClient />
         {post !== null ? (
           <>
             <TitleSinglePage key={post.id} data={post} />
@@ -25,7 +25,7 @@ function SinglePage() {
           "Loading..."
         )}
       </div>
-    </div>
+    </Client >
   );
 }
 

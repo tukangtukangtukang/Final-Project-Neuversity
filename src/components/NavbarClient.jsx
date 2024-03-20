@@ -1,8 +1,8 @@
-import Logo from "../components/Logo.jsx"
-import LogOut from "../components/LogOut.jsx"
-import Searchbar from "../components/Searchbar.jsx"
+import Logo from "./Logo.jsx"
+import LogOut from "./LogOut.jsx"
+import Searchbar from "./Searchbar.jsx"
 
-export default function Navbar() {
+export default function NavbarClient() {
   return (
     <header className="container bg-white drop-shadow-sm w-full h-14 flex justify-between items-center relative">
       <Logo />

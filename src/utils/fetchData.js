@@ -1,10 +1,12 @@
 async function getPosts() {
+    // Mengambil data dari endpoint
     const endpoint = 'https://blog-fe-batch5.neuversity.id/blog-fe-batch5/wp-json/wp/v2/posts?author=11';
+    // Mengambil data dari endpoint
     const res = await fetch(endpoint);
+    // Mengambil data dari respons
     const data = await res.json();
     return data;
 }
-
 
 async function getPost(id) {
     try {

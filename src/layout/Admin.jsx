@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar"
+import NavbarClient from "../components/NavbarClient"
 import Footer from "../components/Footer"
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -23,7 +23,7 @@ export default function Admin({ children }) {
 
   return (
     <>
-      <Navbar />
+      <NavbarClient />
       <main>
         {children}
       </main>
