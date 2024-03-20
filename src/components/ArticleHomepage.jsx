@@ -6,13 +6,14 @@ import { useState, useEffect } from "react";
 
 export default function ArticleHomepage() {
     // // Desctructure posts dari konteks
-    const { posts, setPosts, currentPage } = useArticle();
+    const { posts, setPosts, currentPage, setTotalPage } = useArticle();
 
     const getPosts = async () => {
         try {
             const response = await fetch(`https://blog-fe-batch5.neuversity.id/blog-fe-batch5/wp-json/wp/v2/posts?page=${currentPage}&per_page=4&_embed=true&author=11`);
             const data = await response.json();
             setPosts(data);
+            setTotalPage(response.headers.get("X-WP-TotalPages")); // set total page
         } catch (error) {
             console.error('Error fetching posts:', error);
         }

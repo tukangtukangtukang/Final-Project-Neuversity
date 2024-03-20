@@ -7,9 +7,10 @@ const ArticleContext = createContext();
 export const ArticleProvider = ({ children }) => {
     const [posts, setPosts] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
+    const [totalPage, setTotalPage] = useState(1);
 
     return (
-        <ArticleContext.Provider value={{ posts, setPosts, currentPage, setCurrentPage }}>
+        <ArticleContext.Provider value={{ posts, setPosts, currentPage, setCurrentPage, totalPage, setTotalPage }}>
             {children}
         </ArticleContext.Provider>
     );
