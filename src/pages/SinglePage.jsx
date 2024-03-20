@@ -15,7 +15,6 @@ function SinglePage() {
   return (
     <Client>
       <div className="container">
-        <NavbarClient />
         {post !== null ? (
           <>
             <TitleSinglePage key={post.id} data={post} />

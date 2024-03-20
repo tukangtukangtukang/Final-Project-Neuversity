@@ -36,7 +36,7 @@ async function logout() {
 
 function LogoutButton() {
     const navigate = useNavigate();
-    
+
     const handleLogout = async () => {
         // await logout();
         localStorage.removeItem('token');
@@ -46,21 +46,21 @@ function LogoutButton() {
 
     return (
         <div className='px-6 py-3 flex items-center'>
-            <button onClick={() => document.getElementById('modal_logout').showModal()}  className="flex">
+            <button onClick={() => document.getElementById('modal_logout').showModal()} className="flex">
                 <img src={logoLogout} alt="" className='w-6' />
                 <h1 className='my-auto ml-2 text-xs'>Log Out</h1>
-                <dialog id="modal_logout" className="modal outline-none backdrop-blur-md">
-                    <div className="modal-box outline-none">
-                        <form>
-                            <h3 className="font-bold text-3xl flex justify-center pb-5">Are you sure you want to logout ??</h3> {/* Display the dynamic title */}
-                            <div className="modal-action flex justify-between">
-                                <button type='button' className="btn" onClick={handleLogout}>Yes</button>
-                                <button className="btn" onClick={() => document.getElementById('modal_logout').close()}>No</button>
-                            </div>
-                        </form>
-                    </div>
-                </dialog>
             </button>
+            <dialog id="modal_logout" className="modal outline-none backdrop-blur-md">
+                <div className="modal-box outline-none">
+                    <form>
+                        <h3 className="font-bold text-3xl flex justify-center pb-5">Are you sure you want to logout ??</h3> {/* Display the dynamic title */}
+                        <div className="modal-action flex justify-between">
+                            <button type='button' className="btn" onClick={handleLogout}>Yes</button>
+                            <button className="btn" onClick={() => document.getElementById('modal_logout').close()}>No</button>
+                        </div>
+                    </form>
+                </div>
+            </dialog>
         </div>
     );
 }

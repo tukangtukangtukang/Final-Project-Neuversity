@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import { useArticle } from "./ArticleContext";
 import FeaturedArticleHomepage from "./FeaturedArticleHomepage";
 import PostArticleHomepage from "./PostArticleHomepage";
@@ -26,9 +25,7 @@ export default function ArticleHomepage() {
     return (
         <div className="container justify-center gap-5">
 
-            <NavLink to="/">
-                <FeaturedArticleHomepage />
-            </NavLink>
+            <FeaturedArticleHomepage />
 
             <div className="grid lg:grid-cols-4 sm:grid-cols-2 justify-center container px-7">
                 {

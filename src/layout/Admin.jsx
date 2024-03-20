@@ -1,4 +1,4 @@
-import NavbarClient from "../components/NavbarClient"
+import NavbarAdmin from "../components/NavbarAdmin"
 import Footer from "../components/Footer"
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -16,6 +16,7 @@ export default function Admin({ children }) {
     }
   }
 
+  // check auth user, akan dijalankan setiap kali path berubah
   useEffect(() => {
     checkLogin()
     console.log(location.pathname)
@@ -23,7 +24,7 @@ export default function Admin({ children }) {
 
   return (
     <>
-      <NavbarClient />
+      <NavbarAdmin />
       <main>
         {children}
       </main>
