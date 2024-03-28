@@ -8,7 +8,7 @@ export default function FeaturedArticleHomepage() {
     const { posts } = useArticle();
 
     return (
-        <div className="relative flex my-7 mx-auto bg-red-400">
+        <div className="relative flex my-7 mx-auto">
             <Splide aria-label="My Favorite Images" className='w-full'>
                 {
                     posts !== null
