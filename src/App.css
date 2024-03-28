@@ -54,3 +54,9 @@
 #modal_create {
   width: 800px; /* Adjust as needed */
 }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

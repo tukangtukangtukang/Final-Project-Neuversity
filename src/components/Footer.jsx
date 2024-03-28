@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <footer className='bg-slate-700 text-white fixed bottom-0 w-full'>
-      <div className='container text-center py-5'>
-        <h1>Created By Tukang</h1>
+    <footer className='bg-slate-700 text-white py-2 text-center'>
+      <div className='container'>
+        <p className='text-sm'>Created By Tukang</p>
       </div>
     </footer>
   );
